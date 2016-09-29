@@ -1,0 +1,962 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="bigdata," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="查询模块接口设计文档1. NoteController1.1 api/query/{plat}/notes
+描述：新建一个Note
+请求方式：POST
+参数：
+name:name
+content:content(非必须)
+description:description
+
+返回：
+12345678910111213&amp;#123;&quot;code&quot;: 201, 	&quot;msg&quot;: &quot;新建成功&quot;, 	&quot;data&quot;:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查询接口文档">
+<meta property="og:url" content="http://darrenyjy.github.io/2016/09/22/查询接口文档/index.html">
+<meta property="og:site_name" content="石沉溪洞">
+<meta property="og:description" content="查询模块接口设计文档1. NoteController1.1 api/query/{plat}/notes
+描述：新建一个Note
+请求方式：POST
+参数：
+name:name
+content:content(非必须)
+description:description
+
+返回：
+12345678910111213&amp;#123;&quot;code&quot;: 201, 	&quot;msg&quot;: &quot;新建成功&quot;, 	&quot;data&quot;:">
+<meta property="og:updated_time" content="2016-09-22T09:17:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="查询接口文档">
+<meta name="twitter:description" content="查询模块接口设计文档1. NoteController1.1 api/query/{plat}/notes
+描述：新建一个Note
+请求方式：POST
+参数：
+name:name
+content:content(非必须)
+description:description
+
+返回：
+12345678910111213&amp;#123;&quot;code&quot;: 201, 	&quot;msg&quot;: &quot;新建成功&quot;, 	&quot;data&quot;:">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <title> 查询接口文档 | 石沉溪洞 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?93b770cc8b7944adae746b2050655eab";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">石沉溪洞</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every step leaves its print</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                查询接口文档
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T15:55:46+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工作/" itemprop="url" rel="index">
+                    <span itemprop="name">工作</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/22/查询接口文档/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/22/查询接口文档/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/22/查询接口文档/" class="leancloud_visitors" data-flag-title="查询接口文档">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="查询模块接口设计文档"><a href="#查询模块接口设计文档" class="headerlink" title="查询模块接口设计文档"></a>查询模块接口设计文档</h3><h4 id="1-NoteController"><a href="#1-NoteController" class="headerlink" title="1. NoteController"></a>1. NoteController</h4><h5 id="1-1-api-query-plat-notes"><a href="#1-1-api-query-plat-notes" class="headerlink" title="1.1 api/query/{plat}/notes"></a>1.1 api/query/{plat}/notes</h5><ul>
+<li>描述：新建一个Note</li>
+<li>请求方式：POST</li>
+<li><p>参数：</p>
+<pre><code>name:name
+content:content(非必须)
+description:description
+</code></pre></li>
+<li><p>返回：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="attr">"code"</span>: <span class="number">201</span>,</div><div class="line"> 	<span class="attr">"msg"</span>: <span class="string">"新建成功"</span>,</div><div class="line"> 	<span class="attr">"data"</span>: &#123;</div><div class="line">  	 	<span class="attr">"id"</span>: <span class="number">22</span>,</div><div class="line">   	<span class="attr">"userId"</span>: <span class="number">100</span>,</div><div class="line">   	<span class="attr">"name"</span>: <span class="string">"name"</span>,</div><div class="line">   	<span class="attr">"content"</span>: <span class="string">"content"</span>,</div><div class="line">   	<span class="attr">"description"</span>: <span class="string">"description"</span>,</div><div class="line">   	<span class="attr">"createTime"</span>: <span class="number">1474452386000</span>,</div><div class="line">   	 <span class="attr">"category"</span>: <span class="number">20</span></div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="1-2-api-query-plat-notes-noteId"><a href="#1-2-api-query-plat-notes-noteId" class="headerlink" title="1.2 api/query/{plat}/notes/{noteId}"></a>1.2 api/query/{plat}/notes/{noteId}</h5><ul>
+<li>描述：更新一个Note的信息，要更新哪个参数就传哪个参数</li>
+<li>请求方式：PUT</li>
+<li>参数：<pre><code>name:newname(非必须)
+description:newdescription(非必须)
+content:content (非必须)
+</code></pre></li>
+<li>返回：<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> &#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"更新成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"id"</span>: <span class="number">22</span>,</div><div class="line">    <span class="attr">"userId"</span>: <span class="number">100</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"newname"</span>,</div><div class="line">    <span class="attr">"content"</span>: <span class="string">"content"</span>,</div><div class="line">    <span class="attr">"description"</span>: <span class="string">"newdescription"</span>,</div><div class="line">    <span class="attr">"createTime"</span>: <span class="number">1474453076000</span>,</div><div class="line">    <span class="attr">"category"</span>: <span class="number">20</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="1-3-api-query-plat-notes-noteId"><a href="#1-3-api-query-plat-notes-noteId" class="headerlink" title="1.3 api/query/{plat}/notes/{noteId}"></a>1.3 api/query/{plat}/notes/{noteId}</h5><ul>
+<li>描述：删除一个Note</li>
+<li>请求方式：DELETE</li>
+<li>参数：</li>
+<li>返回：<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">204</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"删除成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="1-4-api-query-plat-notes"><a href="#1-4-api-query-plat-notes" class="headerlink" title="1.4 api/query/{plat}/notes"></a>1.4 api/query/{plat}/notes</h5><ul>
+<li>描述：获取用户所有的Note</li>
+<li>请求方式：GET</li>
+<li>参数:</li>
+<li>返回：<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"> &#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"获取成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"id"</span>: <span class="number">19</span>,</div><div class="line">      <span class="attr">"userId"</span>: <span class="number">100</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"newname"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"content"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"newdescription"</span>,</div><div class="line">      <span class="attr">"createTime"</span>: <span class="number">1474455086000</span>,</div><div class="line">      <span class="attr">"category"</span>: <span class="number">20</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"id"</span>: <span class="number">23</span>,</div><div class="line">      <span class="attr">"userId"</span>: <span class="number">100</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"newname"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"content"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"newdescription"</span>,</div><div class="line">      <span class="attr">"createTime"</span>: <span class="number">1474455039000</span>,</div><div class="line">      <span class="attr">"category"</span>: <span class="number">20</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-NotePropertiesController"><a href="#2-NotePropertiesController" class="headerlink" title="2.NotePropertiesController"></a>2.NotePropertiesController</h4><h5 id="2-1-api-query-plat-note-noteId-noteProperties"><a href="#2-1-api-query-plat-note-noteId-noteProperties" class="headerlink" title="2.1 api/query/{plat}/note/{noteId}/noteProperties"></a>2.1 api/query/{plat}/note/{noteId}/noteProperties</h5><ul>
+<li>描述：获取note的设置</li>
+<li>请求方式：get</li>
+<li>参数：</li>
+<li>返回：<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"获取成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"id"</span>: <span class="number">29</span>,</div><div class="line">      <span class="attr">"noteId"</span>: <span class="number">19</span>,</div><div class="line">      <span class="attr">"propertyId"</span>: <span class="number">21</span>,</div><div class="line">      <span class="attr">"propertyValue"</span>: <span class="string">"jdbc:hive://hhhhhh"</span>,</div><div class="line">      <span class="attr">"isValid"</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">"createTime"</span>: <span class="number">1474447899000</span>,</div><div class="line">      <span class="attr">"propertyName"</span>: <span class="literal">null</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"id"</span>: <span class="number">30</span>,</div><div class="line">      <span class="attr">"noteId"</span>: <span class="number">19</span>,</div><div class="line">      <span class="attr">"propertyId"</span>: <span class="number">24</span>,</div><div class="line">      <span class="attr">"propertyValue"</span>: <span class="string">"yuan"</span>,</div><div class="line">      <span class="attr">"isValid"</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">"createTime"</span>: <span class="number">1474450331000</span>,</div><div class="line">      <span class="attr">"propertyName"</span>: <span class="literal">null</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"id"</span>: <span class="number">32</span>,</div><div class="line">      <span class="attr">"noteId"</span>: <span class="number">19</span>,</div><div class="line">      <span class="attr">"propertyId"</span>: <span class="number">23</span>,</div><div class="line">      <span class="attr">"propertyValue"</span>: <span class="string">"1000"</span>,</div><div class="line">      <span class="attr">"isValid"</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">"createTime"</span>: <span class="number">1474450294000</span>,</div><div class="line">      <span class="attr">"propertyName"</span>: <span class="literal">null</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-2-api-query-plat-note-noteId-noteProperties"><a href="#2-2-api-query-plat-note-noteId-noteProperties" class="headerlink" title="2.2 api/query/{plat}/note/{noteId}/noteProperties"></a>2.2 api/query/{plat}/note/{noteId}/noteProperties</h5><ul>
+<li>描述：更新一个NoteProperties</li>
+<li>请求方式：PUT</li>
+<li>参数：</li>
+<li><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">   &#123;   <span class="attr">"id"</span>:<span class="number">29</span>,</div><div class="line">       <span class="attr">"propertyId"</span>:<span class="number">21</span>,</div><div class="line">       <span class="attr">"propertyValue"</span>: <span class="string">"jdbc:hive://hhhhhh"</span></div><div class="line">   &#125;,</div><div class="line">	&#123;</div><div class="line">		<span class="attr">"id"</span>:<span class="number">30</span>,</div><div class="line">       <span class="attr">"propertyId"</span>:<span class="number">22</span>,</div><div class="line">       <span class="attr">"propertyValue"</span>: <span class="string">"yuan"</span></div><div class="line">   &#125;,</div><div class="line">    &#123;</div><div class="line">    	<span class="attr">"id"</span>:<span class="number">0</span>,</div><div class="line">       <span class="attr">"propertyId"</span>:<span class="number">23</span>,</div><div class="line">       <span class="attr">"propertyValue"</span>: <span class="number">1000</span></div><div class="line">   &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">	&#123;</div><div class="line">	 <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	 <span class="attr">"msg"</span>: <span class="string">"更新成功"</span>,</div><div class="line"> 	 <span class="attr">"data"</span>: <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-NoteContentController"><a href="#3-NoteContentController" class="headerlink" title="3.NoteContentController"></a>3.NoteContentController</h4><h5 id="3-1-api-query-plat-noteContents"><a href="#3-1-api-query-plat-noteContents" class="headerlink" title="3.1 /api/query/{plat}/noteContents"></a>3.1 /api/query/{plat}/noteContents</h5><ul>
+<li>描述：收藏NoteContent</li>
+<li>请求方式：POST</li>
+<li><p>参数：</p>
+<pre><code>name:newname
+description:newdescription
+content:select * from table
+</code></pre></li>
+<li><p>返回：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"保存成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-2-api-query-plat-noteContents-noteContentId"><a href="#3-2-api-query-plat-noteContents-noteContentId" class="headerlink" title="3.2 /api/query/{plat}/noteContents/{noteContentId}"></a>3.2 /api/query/{plat}/noteContents/{noteContentId}</h5><ul>
+<li>描述：更新一个NoteContent</li>
+<li>请求方式：PUT</li>
+<li>参数：<pre><code>name:newname1
+description:newdescription1
+content:select name  from table
+</code></pre></li>
+<li>返回：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&#123;</div><div class="line">  "code": 200,</div><div class="line">  "msg": "更新成功",</div><div class="line">  "data": &#123;</div><div class="line">    "id": 1,</div><div class="line">    "name": "newname1",</div><div class="line">    "description": "newdescription1",</div><div class="line">    "content": "select name  from table",</div><div class="line">    "resultSetId": 0,</div><div class="line">    "userId": 100,</div><div class="line">    "createTime": 1474439364000,</div><div class="line">    "category": 0,</div><div class="line">    "resultSet": null</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-3-api-query-plat-noteContents-noteContentId"><a href="#3-3-api-query-plat-noteContents-noteContentId" class="headerlink" title="3.3 /api/query/{plat}/noteContents/{noteContentId}"></a>3.3 /api/query/{plat}/noteContents/{noteContentId}</h5><ul>
+<li>描述：删除NoteContent</li>
+<li>请求方式：DELETE</li>
+<li>参数：</li>
+<li>返回：<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> 	<span class="attr">"code"</span>: <span class="number">204</span>,</div><div class="line">	 	<span class="attr">"msg"</span>: <span class="string">"删除成功"</span>,</div><div class="line"> 		<span class="attr">"data"</span>: <span class="string">"1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-4-api-query-plat-noteContents"><a href="#3-4-api-query-plat-noteContents" class="headerlink" title="3.4 /api/query/{plat}/noteContents"></a>3.4 /api/query/{plat}/noteContents</h5><ul>
+<li>描述：获取用户该category下所有收藏的NoteContent</li>
+<li>请求方式：GET</li>
+<li>参数：无</li>
+<li>返回：</li>
+</ul>
+<h4 id="4-HiveQueryController"><a href="#4-HiveQueryController" class="headerlink" title="4.HiveQueryController"></a>4.HiveQueryController</h4><h5 id="4-1-api-query-plat-user-note-run"><a href="#4-1-api-query-plat-user-note-run" class="headerlink" title="4.1 api/query/{plat}/user/note/run"></a>4.1 api/query/{plat}/user/note/run</h5><ul>
+<li>描述：执行语句</li>
+<li>参数：noteId content </li>
+<li>返回：</li>
+</ul>
+<h5 id="4-2-api-query-plat-user-note-cancel"><a href="#4-2-api-query-plat-user-note-cancel" class="headerlink" title="4.2 api/query/{plat}/user/note/cancel"></a>4.2 api/query/{plat}/user/note/cancel</h5><ul>
+<li>描述：取消语句的执行</li>
+<li>参数：userId noteId</li>
+<li>返回：</li>
+</ul>
+<h5 id="4-3-api-query-plat-note-timedRun"><a href="#4-3-api-query-plat-note-timedRun" class="headerlink" title="4.3 api/query/{plat}/note/timedRun"></a>4.3 api/query/{plat}/note/timedRun</h5><ul>
+<li>描述：定时执行</li>
+<li>参数：noteId content time</li>
+<li>返回：</li>
+</ul>
+<h4 id="5-UdfController"><a href="#5-UdfController" class="headerlink" title="5.UdfController"></a>5.UdfController</h4><h5 id="5-1-api-query-plat-udfs"><a href="#5-1-api-query-plat-udfs" class="headerlink" title="5.1 /api/query/{plat}/udfs"></a>5.1 /api/query/{plat}/udfs</h5><ul>
+<li>描述：新建自定义函数</li>
+<li>请求类型：POST</li>
+<li>参数:<pre><code>name:name
+description:description
+hdfsUrl:hdfsUrl
+</code></pre></li>
+<li>返回:<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">201</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"新建成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-2-api-query-plat-udfs"><a href="#5-2-api-query-plat-udfs" class="headerlink" title="5.2 /api/query/{plat}/udfs"></a>5.2 /api/query/{plat}/udfs</h5><ul>
+<li>描述：获取自定义函数</li>
+<li>请求类型：GET</li>
+<li>参数:</li>
+<li>返回:<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"获取成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"id"</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"name"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"description"</span>,</div><div class="line">      <span class="attr">"hdfsUrl"</span>: <span class="string">"hdfsUrl"</span>,</div><div class="line">      <span class="attr">"userId"</span>: <span class="number">100</span>,</div><div class="line">      <span class="attr">"category"</span>: <span class="number">20</span>,</div><div class="line">      <span class="attr">"createTime"</span>: <span class="number">1474456371000</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-3-api-query-plat-udfs-id"><a href="#5-3-api-query-plat-udfs-id" class="headerlink" title="5.3 /api/query/{plat}/udfs/{id}"></a>5.3 /api/query/{plat}/udfs/{id}</h5><ul>
+<li>描述：删除自定义函数</li>
+<li>请求类型：DELETE</li>
+<li>参数:</li>
+<li>返回:<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">204</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"删除成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="string">"1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="6-PropertyController-暂时用不着"><a href="#6-PropertyController-暂时用不着" class="headerlink" title="6.PropertyController(暂时用不着)"></a>6.PropertyController(暂时用不着)</h4><h5 id="6-1-api-query-properties"><a href="#6-1-api-query-properties" class="headerlink" title="6.1 api/query/properties"></a>6.1 api/query/properties</h5><ul>
+<li>描述：批量新建参数</li>
+<li>请求类型：POST</li>
+<li><p>参数：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">   &#123;</div><div class="line">       "name": "username",</div><div class="line">       "description": "用户名",   </div><div class="line">       "isValid": 1,</div><div class="line">       "category":20,//hive参数</div><div class="line">       "defaultValue": "yuanjinyao",</div><div class="line">       "initNeed": 1</div><div class="line">   &#125;,</div><div class="line">   &#123;</div><div class="line">       "name": "username",</div><div class="line">       "description": "用户名",</div><div class="line">       "isValid": 1,</div><div class="line">       "category":30,//spark参数</div><div class="line">       "defaultValue": "yuanjinyao",</div><div class="line">       "initNeed": 1</div><div class="line">   &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> 		<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line"> 		<span class="attr">"msg"</span>: <span class="string">"新建成功"</span>,</div><div class="line"> 		<span class="attr">"data"</span>: <span class="number">2</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="6-2-api-query-properties-propertiesId"><a href="#6-2-api-query-properties-propertiesId" class="headerlink" title="6.2 api/query/properties/{propertiesId}"></a>6.2 api/query/properties/{propertiesId}</h5><ul>
+<li>描述：更新参数设置</li>
+<li>请求类型：PUT</li>
+<li>参数：      <pre><code>   name:newname
+description:newdescription
+defaultValue:defaultValue
+category:20
+initNeed:0
+isValid:1
+</code></pre></li>
+<li>返回：<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">  <span class="attr">"msg"</span>: <span class="string">"更新成功"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"id"</span>: <span class="number">24</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"newname"</span>,</div><div class="line">    <span class="attr">"defaultValue"</span>: <span class="string">"defaultValue"</span>,</div><div class="line">    <span class="attr">"description"</span>: <span class="string">"newdescription"</span>,</div><div class="line">    <span class="attr">"category"</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">"initNeed"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"isValid"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"createTime"</span>: <span class="number">1474376071000</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bigdata/" rel="tag">#bigdata</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/24/Java动态代理和CGLib代理/" rel="next" title="Java动态代理和CGLib代理">
+                <i class="fa fa-chevron-left"></i> Java动态代理和CGLib代理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/29/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/22/查询接口文档/"
+           data-title="查询接口文档" data-url="http://darrenyjy.github.io/2016/09/22/查询接口文档/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/logo.jpg"
+               alt="darrenyjy" />
+          <p class="site-author-name" itemprop="name">darrenyjy</p>
+          <p class="site-description motion-element" itemprop="description">Every step leaves its print</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询模块接口设计文档"><span class="nav-number">1.</span> <span class="nav-text">查询模块接口设计文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-NoteController"><span class="nav-number">1.1.</span> <span class="nav-text">1. NoteController</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-api-query-plat-notes"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 api/query/{plat}/notes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-api-query-plat-notes-noteId"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 api/query/{plat}/notes/{noteId}</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-api-query-plat-notes-noteId"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 api/query/{plat}/notes/{noteId}</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-api-query-plat-notes"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 api/query/{plat}/notes</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-NotePropertiesController"><span class="nav-number">1.2.</span> <span class="nav-text">2.NotePropertiesController</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-api-query-plat-note-noteId-noteProperties"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 api/query/{plat}/note/{noteId}/noteProperties</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-api-query-plat-note-noteId-noteProperties"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 api/query/{plat}/note/{noteId}/noteProperties</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-NoteContentController"><span class="nav-number">1.3.</span> <span class="nav-text">3.NoteContentController</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-api-query-plat-noteContents"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 /api/query/{plat}/noteContents</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-api-query-plat-noteContents-noteContentId"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 /api/query/{plat}/noteContents/{noteContentId}</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-api-query-plat-noteContents-noteContentId"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 /api/query/{plat}/noteContents/{noteContentId}</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-api-query-plat-noteContents"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 /api/query/{plat}/noteContents</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HiveQueryController"><span class="nav-number">1.4.</span> <span class="nav-text">4.HiveQueryController</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-api-query-plat-user-note-run"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 api/query/{plat}/user/note/run</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-api-query-plat-user-note-cancel"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 api/query/{plat}/user/note/cancel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-api-query-plat-note-timedRun"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 api/query/{plat}/note/timedRun</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-UdfController"><span class="nav-number">1.5.</span> <span class="nav-text">5.UdfController</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-api-query-plat-udfs"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 /api/query/{plat}/udfs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-api-query-plat-udfs"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 /api/query/{plat}/udfs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-api-query-plat-udfs-id"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 /api/query/{plat}/udfs/{id}</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-PropertyController-暂时用不着"><span class="nav-number">1.6.</span> <span class="nav-text">6.PropertyController(暂时用不着)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-api-query-properties"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 api/query/properties</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-api-query-properties-propertiesId"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 api/query/properties/{propertiesId}</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darrenyjy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuanjinyao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("mSGr7DSdrb1MDREKNukp95J9-gzGzoHsz", "R8pAocDT5l66rbGYIPyGYaWz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
