@@ -118,7 +118,7 @@
  是一块较小的内存空间，其作用可以看作是当前线程所执行的字节码的行号指示器，字节码解析器工作时通过改变程序计数器的值来选取下一条需要执行的字节码指令。程序">
 <meta property="og:image" content="http://darrenyjy.github.io/uploads/7.jmm.png">
 <meta property="og:image" content="http://darrenyjy.github.io/uploads/1.png">
-<meta property="og:updated_time" content="2016-07-12T13:10:46.000Z">
+<meta property="og:updated_time" content="2016-10-09T08:41:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机的理解">
 <meta name="twitter:description" content="java虚拟机内存结构   java虚拟机规范规定的java虚拟机内存其实就是java虚拟机运行时数据区，其架构如下：  
@@ -398,7 +398,7 @@
 </li>
 <li><p>方法区：</p>
 <p> 方法区与堆一样，是被各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译后的代码等数据。虽然java虚拟机规范把方法区描述为堆的一个逻辑部分，但是方法区却有一个别名叫Non-Heap(非堆)。</p>
-<p> Sun HotSpot虚拟机把方法区叫永久代(Permanent Generation)，方法区中最重要的部分是运行时常量池。Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池，用于存放编译期生成的各种字面变量、符号引用、直接引用等，这些内容将在类加载后存放到方法区的运行时常量池中，另外在运行期间也可以将新的常量存放到常量池中，如String的intern()方法。</p>
+<p> Sun HotSpot虚拟机把方法区叫永久代(Permanent Generation)，但实际上两者并且等价，HotSpot的虚拟机设计团队用永久代来实现方法区而已，省去了方法区内存管理代码的编写，其他虚拟机中是没有永久代的概念的。方法区中最重要的部分是运行时常量池。Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池，用于存放编译期生成的各种字面变量、符号引用、直接引用等，这些内容将在类加载后存放到方法区的运行时常量池中，另外在运行期间也可以将新的常量存放到常量池中，如String的intern()方法。<br> 在Jdk 1.7中，hotspot已经在字符串常量池移出了方法区，改用了native memory来实现方法区</p>
 <p> 方法区和运行时常量池在无法满足内存分配时，也会抛出OutOfMemoryError异常。</p>
 </li>
 <li><p>直接内存：</p>
@@ -529,7 +529,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

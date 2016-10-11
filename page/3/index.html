@@ -284,6 +284,179 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/28/String池化及intern方法的作用/" itemprop="url">
+                  String池化及intern方法的作用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-28T19:16:57+08:00" content="2016-05-28">
+              2016-05-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/28/String池化及intern方法的作用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/String池化及intern方法的作用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/28/String池化及intern方法的作用/" class="leancloud_visitors" data-flag-title="String池化及intern方法的作用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="String池化"><a href="#String池化" class="headerlink" title="String池化"></a>String池化</h2><blockquote>
+<p>String池 ：String是不可改变的，为了提高效率Java引用了字符串池的概念，例如new String(“abc”);首先会在String池中创建一个对象“abc”，因为有NEW的存在所以会分配地址空间copy String池的内容。当出现的String对象在String池中不存在时即在String池中创建该对象。</p>
+</blockquote>
+<p>字符串对象的创建方式有两种如下:</p>
+<pre><code>String s1 = new String(&quot;&quot;);//第一种不会入池
+
+String s2 = &quot;&quot;;//第二种看情况而定(等号右边如果是常量则入池,非常量则不入池)
+</code></pre><p>例:</p>
+<pre><code>String s3 = &quot;a&quot; + &quot;b&quot;; //&quot;a&quot;是常量,&quot;b&quot;是常量,常量+常量=常量,所以会入池.
+
+String s4 = s1 + &quot;b&quot;;   //s1是变量,&quot;b&quot;是常量,变量+常量!=常量,所以不会入池.
+</code></pre><p>一旦入池的话,就会先查找池中有无此对象.如果有此对象,则让对象引用指向此对象;如果无此对象,则先创建此对象,再让对象引用指向此对象.</p>
+<h2 id="intern"><a href="#intern" class="headerlink" title="intern()"></a>intern()</h2><blockquote>
+<p>存在于.class文件中的常量池，在运行期被JVM装载，并且可以扩充。String的intern()方法就是扩充常量池的一个方法；当一个String实例str调用intern()方法时，Java查找常量池中是否有相同Unicode的字符串常量，如果有，则返回其的引用，如果没有，则在常量池中增加一个Unicode等于str的字符串并返回它的引用；</p>
+</blockquote>
+<p>例3：</p>
+<pre><code>String s0= “kvill”;  
+String s1=new String(”kvill”);  
+String s2=new String(“kvill”);  
+System.out.println( s0==s1 );  
+System.out.println( “**********” );  
+s1.intern();  
+s2=s2.intern(); //把常量池中“kvill”的引用赋给s2  
+System.out.println( s0==s1);  
+System.out.println( s0==s1.intern() );  
+System.out.println( s0==s2 );  
+</code></pre><p>结果为：</p>
+<pre><code>false  
+**********  
+false //虽然执行了s1.intern(),但它的返回值没有赋给s1  
+true //说明s1.intern()返回的是常量池中”kvill”的引用  
+true  
+</code></pre><p>最后我再破除一个错误的理解：</p>
+<p>有人说，”使用String.intern()方法则可以将一个String类的保存到一个全局String表中，如果具有相同值的Unicode字符串已经在这个表中，那么该方法返回表中已有字符串的地址，如果在表中没有相同值的字符串，则将自己的地址注册到表中”。如果我把他说的这个全局的String表理解为常量池的话，他的最后一句话，“<strong>如果在表中没有相同值的字符串，则将自己的地址注册到表中</strong>”是错的：</p>
+<p>看例4：</p>
+<pre><code>String s1=new String(&quot;kvill&quot;);  
+String s2=s1.intern();  
+System.out.println( s1==s1.intern() );  
+System.out.println( s1+&quot; &quot;+s2 );  
+System.out.println( s2==s1.intern() );  
+</code></pre><p>结果：</p>
+<pre><code>false 
+kvill kvill  
+true  
+</code></pre><p>在这个类中我们没有声名一个”kvill”常量，所以常量池中一开始是没有”kvill”的，当我们调用s1.intern()后就在常量池中新添加了一个”kvill”常量，原来的不在常量池中的”kvill”仍然存在，也就不是“将自己的地址注册到常量池中”了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/28/Java-ArrayList与LinkedList对比/" itemprop="url">
                   Java ArrayList与LinkedList对比
                 </a>
@@ -721,7 +894,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
