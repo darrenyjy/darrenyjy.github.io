@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SSH," />
+  <meta name="keywords" content="实时课堂," />
 
 
 
@@ -114,7 +114,7 @@ property.properties
 
 property.properties
 123456789101112131415161718//mysql链接，如果是远程数据库，修改为远程数据库的链接和端口mysql.url=jdbc\:mysql\://127.0.0.1\:3307/zzkt_ofbiz?&amp;amp;useUnicode\=true&amp;">
-<meta property="og:updated_time" content="2016-06-13T00:59:05.000Z">
+<meta property="og:updated_time" content="2016-11-17T11:00:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在线课堂搭建注意事项">
 <meta name="twitter:description" content="RealTimeClassRoom修改的文件将服务器环境搭建好之后需要修改以下几个文件：
@@ -317,8 +317,8 @@ property.properties
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Work/" itemprop="url" rel="index">
+                    <span itemprop="name">Work</span>
                   </a>
                 </span>
 
@@ -389,7 +389,8 @@ property.properties
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"primaryAuthenticationHandler"</span></span></div><div class="line">          <span class="attr">class</span>=<span class="string">"org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sql"</span> <span class="attr">value</span>=<span class="string">"select password from sskt_user where userId=?"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">				 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"passwordEncoder"</span> <span class="attr">ref</span>=<span class="string">"passwordEncoder"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span></div><div class="line">	   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://127.0.0.1:3307/zzkt_ofbiz<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>mysql123<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>/cas/WEB-INF/view/jsp/default/ui/casLogoutView.jsp</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function">function <span class="title">doSomeLogout</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//getLabelsGet("http://121.42.149.42:6301/logout");</span></div><div class="line">	getLabelsGet(<span class="string">"http://sso.zzkt.com:8080/RealTimeClassRoom/sskt_logout/sskt_logout.action"</span>);	</div><div class="line">	<span class="comment">//getLabelsGet("http://121.42.149.42:6300/logout");</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function">function <span class="title">doSomeLogout</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//getLabelsGet("http://121.42.149.42:6301/logout");</span></div><div class="line">	getLabelsGet(<span class="string">"http://sso.zzkt.com:8080/RealTimeClassRoom/sskt_logout/sskt_logout.action"</span>);	</div><div class="line">	<span class="comment">//getLabelsGet("http://121.42.149.42:6300/logout");</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -413,7 +414,7 @@ property.properties
       
         <div class="post-tags">
           
-            <a href="/tags/SSH/" rel="tag">#SSH</a>
+            <a href="/tags/实时课堂/" rel="tag">#实时课堂</a>
           
         </div>
       
@@ -504,7 +505,7 @@ property.properties
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -512,7 +513,7 @@ property.properties
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

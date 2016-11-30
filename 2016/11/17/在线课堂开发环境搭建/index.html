@@ -1,0 +1,864 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="实时课堂," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Maven私服的搭建1. 下载,通过root用户进去Ubuntu server　　12$cd /opt$wget http://download.sonatype.com/nexus/oss/nexus-2.10.0-02-bundle.tar.gz
+2. 启动　 环境准备，启动nexus，必须先完成JDK环境的配置。    1234567　　$　　cd /opt/　　$　　tar -zxvf n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在线课堂开发环境搭建">
+<meta property="og:url" content="http://darrenyjy.github.io/2016/11/17/在线课堂开发环境搭建/index.html">
+<meta property="og:site_name" content="石沉溪洞">
+<meta property="og:description" content="Maven私服的搭建1. 下载,通过root用户进去Ubuntu server　　12$cd /opt$wget http://download.sonatype.com/nexus/oss/nexus-2.10.0-02-bundle.tar.gz
+2. 启动　 环境准备，启动nexus，必须先完成JDK环境的配置。    1234567　　$　　cd /opt/　　$　　tar -zxvf n">
+<meta property="og:updated_time" content="2016-11-29T13:55:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在线课堂开发环境搭建">
+<meta name="twitter:description" content="Maven私服的搭建1. 下载,通过root用户进去Ubuntu server　　12$cd /opt$wget http://download.sonatype.com/nexus/oss/nexus-2.10.0-02-bundle.tar.gz
+2. 启动　 环境准备，启动nexus，必须先完成JDK环境的配置。    1234567　　$　　cd /opt/　　$　　tar -zxvf n">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <title> 在线课堂开发环境搭建 | 石沉溪洞 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?93b770cc8b7944adae746b2050655eab";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">石沉溪洞</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every step leaves its print</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在线课堂开发环境搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-17T18:51:08+08:00" content="2016-11-17">
+              2016-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Work/" itemprop="url" rel="index">
+                    <span itemprop="name">Work</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/17/在线课堂开发环境搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/在线课堂开发环境搭建/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/17/在线课堂开发环境搭建/" class="leancloud_visitors" data-flag-title="在线课堂开发环境搭建">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Maven私服的搭建"><a href="#Maven私服的搭建" class="headerlink" title="Maven私服的搭建"></a>Maven私服的搭建</h3><h5 id="1-下载-通过root用户进去Ubuntu-server"><a href="#1-下载-通过root用户进去Ubuntu-server" class="headerlink" title="1. 下载,通过root用户进去Ubuntu server　　"></a>1. 下载,通过root用户进去Ubuntu server　　</h5><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$cd</span> /opt</div><div class="line"><span class="variable">$wget</span> http://download.sonatype.com/nexus/oss/nexus-2.10.0-02-bundle.tar.gz</div></pre></td></tr></table></figure>
+</code></pre><h5 id="2-启动"><a href="#2-启动" class="headerlink" title="2. 启动"></a>2. 启动</h5><p>　 环境准备，启动nexus，必须先完成JDK环境的配置。<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">　　$　　<span class="built_in">cd</span> /opt/</div><div class="line"></div><div class="line">　　$　　tar -zxvf nexus-2.10.0-02-bundle.tar.gz</div><div class="line"></div><div class="line">　　$　　<span class="built_in">cd</span> /opt/nexus-2.10.0-02/bin</div><div class="line"></div><div class="line">　　$　　vi nexus</div></pre></td></tr></table></figure></p>
+<p>　　在启动文件nexus中增加nexus的启动用户，否则没权限启动，将报错如下：</p>
+<p>　　WARNING - NOT RECOMMENDED TO RUN AS ROOT</p>
+<p>　　If you insist running as root, then set the environment variable RUN_AS_USER=root before running this script</p>
+<p>　　所以要解决此问题，需要在启动文件nexus，加上RUN_AS_USER=root<br>　　　　<br>　　保存退出之后，即可启动nexus，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">　　$　　./nexus start　　</div><div class="line"></div><div class="line">　　Starting Nexus OSS...</div><div class="line">　　Started Nexus OSS.</div></pre></td></tr></table></figure></p>
+<p>　　表示启动成功，访问地址：<a href="http://ip:8081/nexus" target="_blank" rel="external">http://ip:8081/nexus</a></p>
+<h5 id="3-配置nexus"><a href="#3-配置nexus" class="headerlink" title="3. 配置nexus"></a>3. 配置nexus</h5><p>　　登录nexus，右上角Log In，默认登录用户名密码：admin/admin123</p>
+<p>　　但是需要将其他几个代理的库配置映射到Public中，分别将Apache Snapshots、Central、Codehaus Sanpshots下Download Remote Indexes选项选择【true】，保存即可，默认是false，如下图</p>
+<p>　然后分别将Apache Snapshots、Central、Codehaus Sanpshots更新Index，在每一个库上面右键操作Repair Index
+　</p>
+<h5 id="4-开启开机启动"><a href="#4-开启开机启动" class="headerlink" title="4.开启开机启动"></a>4.开启开机启动</h5><h3 id="Mysql搭建"><a href="#Mysql搭建" class="headerlink" title="Mysql搭建"></a>Mysql搭建</h3><h5 id="1-安装mysql"><a href="#1-安装mysql" class="headerlink" title="1.安装mysql"></a>1.安装mysql</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">　　1. sudo apt-get install mysql-server </div><div class="line">　　2. sudo apt-get isntall mysql-client </div><div class="line">　　3. sudo apt-get install libmysqlclient-dev</div><div class="line">　　4. mysql -u root -p</div></pre></td></tr></table></figure>
+<h5 id="2-新建用户开启远程链接"><a href="#2-新建用户开启远程链接" class="headerlink" title="2.新建用户开启远程链接"></a>2.新建用户开启远程链接</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">　  1. create user <span class="string">'xinshen'</span>@<span class="string">'%'</span> identified by <span class="string">'xinshen_mysql'</span>;</div><div class="line">　  2. create database xinshen;</div><div class="line">　  3. grant all privileges on xinshen.* to <span class="string">'xinshen'</span>@<span class="string">'%'</span> identified by <span class="string">'xinshen_mysql'</span> with grant option; </div><div class="line">　  4. flush privileges;</div><div class="line">　  5. service mysql stop</div><div class="line">　  6. service mysql start</div><div class="line">```	</div><div class="line"><span class="comment">#####  3.开启开机启动</span></div><div class="line"> </div><div class="line"><span class="comment">### tomcat搭建</span></div><div class="line"></div><div class="line"><span class="comment">### redis搭建</span></div><div class="line"></div><div class="line"><span class="comment">### FastDFS搭建</span></div><div class="line"></div><div class="line">官方论坛： http://www.csource.org</div><div class="line">下载地址: http://sourceforge.net/projects/fastdfs/files/</div><div class="line">github软件仓库</div><div class="line">libfastcommon — FastDFS和FastDHT的通用函数库，地址： https://github.com/happyfish100/libfastcommon.git</div><div class="line"></div><div class="line">FastDFS — FastDFS主代码，地址： https://github.com/happyfish100/fastdfs.git</div><div class="line"></div><div class="line">fastdfs-nginx-module — FastDFS的nginx模块，地址：https://github.com/happyfish100/fastdfs-nginx-module.git</div><div class="line"></div><div class="line">Ubuntu 14.04下部署FastDFS 5.08+Nginx 1.9.14</div><div class="line">最新的版本可以在这里获取，本文下载的版本是5.08，FastDFS是为互联网应用量身定做的一套分布式文件存储系统，非常适合用来存储用户图片、视频、文档等文件。对于互联网应用，和其他分布式文件系统相比，优势非常明显。具体情况大家可以看相关的介绍文档，包括FastDFS介绍PPT等等。</div><div class="line"></div><div class="line">出于简洁考虑，FastDFS没有对文件做分块存储，因此不太适合分布式计算场景。</div><div class="line"></div><div class="line">下载好后，server端分为两个部分，一个是tracker，一个是storage。顾名思义，前者调度管理，负载均衡，后者则是实际的存储节点。两个都能做成集群，以防止单点故障。以前的4.x版本依赖libevent，现在不需要了，只需要libfastcommon。安装方法如下：</div><div class="line"></div><div class="line">1. 安装libfastcommon</div><div class="line"> ```bash </div><div class="line"> git <span class="built_in">clone</span> https://github.com/happyfish100/libfastcommon.git</div><div class="line"> <span class="built_in">cd</span> libfastcommon/ </div><div class="line"> ./make.sh </div><div class="line"> ./make.sh install</div></pre></td></tr></table></figure>
+<ol>
+<li><p>这时候需要设置环境变量或者创建软链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/lib64/ </div><div class="line">ln <span class="_">-s</span> /usr/lib64/libfastcommon.so /usr/<span class="built_in">local</span>/lib/libfastcommon.so</div></pre></td></tr></table></figure>
+</li>
+<li><p>解压执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar xzf FastDFS.tar.gz </div><div class="line"><span class="built_in">cd</span> FastDFS/ </div><div class="line">./make.sh </div><div class="line">/make.sh install</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>确认make没有错误后，执行安装，默认会安装到/usr/bin中，并在/etc/fdfs中添加三个配置文件。</p>
+<ol>
+<li>修改配置文件<br>首先将三个文件的名字去掉sample，暂时只修改以下几点，先让fastdfs跑起来，其余参数调优的时候再考虑。</li>
+</ol>
+<p>4.1 tracker.conf 中修改：<br>    base_path=/home/fastdfs #用于存放日志。<br>    http.server_port=8090 ////TODO 这个http.server_port=8888 指的是在tracker服务器上启动http服务进程，如:apache或者nginx 启动时所监听的端口</p>
+<p>4.2 storage.conf中修改：<br>    disabled=false                        #启用配置文件<br>    group_name=group1                     #组名，根据实际情况修改<br>    port=23000                            #设置 storage 的端口号<br>    base_path=/home/fastdfs             #设置 storage 的日志目录（需预先创建）<br>    store_path_count=1                    #存储路径个数，需要和 store_path 个数匹配<br>    store_path0=/home/fastdfs/storage     #存储路径<br>    tracker_server=120.77.41.162:22122     #tracker 服务器的 IP 地址和端口号<br>    http.server_port=8888                #设置storage上启动的http服务的端口号，如安装的nginx的端口号<br>    [备注]：store_path_count如果有多个，那么需要设置多个存储路径，如：<br>    store_path_count=2<br>    store_path0=/home/fastdfs/storage<br>    store_path1=/home/fastdfs/storage1</p>
+<p>4.3 client.conf 中修改:<br>base_path=/home/fastdfs #用于存放日志。 tracker_server=120.77.41.162:22122 #指定tracker服务器地址。<br>http.tracker_server_port=8888</p>
+<p> #include http.conf<br>其它保持默认，注意上面那个是1个#，默认是2个#，去掉1个就行<br>付：<br>1) tracker.conf说明 <a href="http://www.tuicool.com/articles/RjQf22f" target="_blank" rel="external">http://www.tuicool.com/articles/RjQf22f</a><br>2) storage.conf说明 <a href="http://www.tuicool.com/articles/fuMJjyf" target="_blank" rel="external">http://www.tuicool.com/articles/fuMJjyf</a> </p>
+<ol>
+<li><p>拷贝配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  cp -rv /home/yjy/fastdfs/conf/httpd.conf /etc/fdfs/  （如果要用httpserver 或者使用nginx作为文件获取服务器必须要这个文件）</div><div class="line">  cp -rv /home/yjy/fastdfs/conf/mime.types /etc/fdfs/ </div><div class="line"> cp FastDFS(源码解压目录)/conf/anti-steal.jpg /etc/fdfs/ </div><div class="line">cp fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/</div></pre></td></tr></table></figure>
+</li>
+<li><p>开启防火墙：   </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --zone=public --add-port=23000/tcp --permanent</div><div class="line">firewall-cmd --permanent --zone=public --add-service=http</div><div class="line">firewall-cmd --zone=public --add-port=22122/tcp --permanent</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动tracker和storage</p>
+</li>
+</ol>
+<p>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf<br>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf<br>netstat –lnp –tcp 参看端口是否起来，默认如果显示22122和8090,23000,80说明服务正常起来</p>
+<ol>
+<li>上传删除测试<br>root@ubuntu:~# fdfs_test /etc/fdfs/client.conf upload /home/steven/01.jpg</li>
+</ol>
+<h3 id="nginx搭建"><a href="#nginx搭建" class="headerlink" title="nginx搭建"></a>nginx搭建</h3><ol>
+<li>zlib 安装<br>wget <a href="http://zlib.net/zlib-1.2.8.tar.gz" target="_blank" rel="external">http://zlib.net/zlib-1.2.8.tar.gz</a><br> tar xzf zlib-1.2.8.tar.gz<br> cd zlib-1.2.8<br> ./configure –prefix=/usr/local/zlib-1.2.8 &amp;&amp; make &amp;&amp;make install </li>
+<li>pcre 安装<br>wget <a href="http://exim.mirror.fr/pcre/pcre-8.38.tar.gz" target="_blank" rel="external">http://exim.mirror.fr/pcre/pcre-8.38.tar.gz</a><br> tar xzf pcre-8.38.tar.gz<br> cd pcre-8.38<br> ./configure –prefix=/usr/local/pcre-8.33 –libdir=/usr/local/lib/pcre –includedir=/usr/local/include/pcre &amp;&amp; make &amp;&amp; make install </li>
+<li><p>openssl<br>wget <a href="http://www.openssl.org/source/openssl-1.0.1e.tar.gz" target="_blank" rel="external">http://www.openssl.org/source/openssl-1.0.1e.tar.gz</a><br>tar xzf openssl-1.0.1e.tar.gz<br>cd openssl-1.0.1e<br>./config –prefix=/usr/local/openssl-1.0.1e &amp;&amp; make &amp;&amp; make install </p>
+</li>
+<li><p>添加软连接<br>ln -sv /usr/include/fastcommon /usr/local/include/fastcommon<br>ln -sv /usr/include/fastdfs /usr/local/include/fastdfs<br>ln -sv /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so<br>为了nginx自启动还需要<br>ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so </p>
+</li>
+<li><p>下载安装fastdfs-nginx-module<br>wget <a href="http://jaist.dl.sourceforge.net/project/fastdfs/FastDFS%20Nginx%20Module%20Source%20Code/fastdfs-nginx-module_v1.16.tar.gz" target="_blank" rel="external">http://jaist.dl.sourceforge.net/project/fastdfs/FastDFS%20Nginx%20Module%20Source%20Code/fastdfs-nginx-module_v1.16.tar.gz</a><br>tar xzf fastdfs-nginx-module_v1.16.tar.gz </p>
+</li>
+<li><p>下载安装nginx<br>wget <a href="http://nginx.org/download/nginx-1.9.15.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.9.15.tar.gz</a><br>tar xzf nginx-1.9.15.tar.gz<br>cd nginx-1.9.15<br>./configure –prefix=/usr/local/nginx –with-pcre=/home/yjy/pcre-8.38 –with-zlib=/home/yjy/zlib-1.2.8 –add-module=/home/yjy/fastdfs-nginx-module/src –with-http_ssl_module –with-openssl=/home/yjy/openssl-1.0.1e –sbin-path=/usr/local/nginx/sbin/nginx &amp;&amp; make &amp;&amp; make install </p>
+</li>
+<li><p>修改nginx扩展模块的配置文件,注意修改的是复制后的文件<br>　　cd ../fastdfs-nginx-module/src<br>cp mod_fastdfs.conf /etc/fdfs/<br>vi /etc/fdfs/mod_fastdfs.conf<br>base_path=/data/fastdfs/storage      #保存日志目录<br>tracker_server=120.77.41.162:22122     #tracker 服务器的 IP 地址以及端口号<br>storage_server_port=23000            #storage服务器的端口号<br>group_name=group1                    #当前服务器的group名<br>url_have_group_name = true           #文件url中是否有group 名<br>store_path_count=1                   #存储路径个数，需要和store_path 个数匹配<br>store_path0=/home/fastdfs/storage    #存储路径<br>group_count = 1                      #设置组的个数<br>#然后在末尾添加分组信息，目前只有一个分组，就只写一个<br>[group1]<br>group_name=group1<br>storage_server_port=23000<br>store_path_count=1<br>store_path0=/home/fastdfs/storage</p>
+</li>
+<li><p>做M00的链接<br>ln -s /home/fastdfs/storage/data  /home/fastdfs/storage/data/M00 </p>
+</li>
+<li><p>修改nginx的配置文件<br>备注：如果nginx有其他服务器在用，在nginx.conf原有的基础上追加一个下面server的配置即可<br>vi /usr/local/nginx/conf/nginx.conf<br>server {<br>　　listen 8888；/注意端口和trackerServer一样<br>　　location / {<br>　　　　root /home/fastdfs/storage/data;<br>　　　　index index.html index.htm;<br>　　 }<br>　　location /group1/M00 {<br>　　　　 root /home/fastdfs/storage/data;<br>　　　　ngx_fastdfs_module;<br>　　}<br>}</p>
+<ol>
+<li>重启相关服务，验证整合是否成功<br>先重启storage服务:<br>/etc/init.d/fdfs_storaged start<br>然后再启动nginx，<br>注意顺序，否则会报端口占用的错误<br>./usr/local/nginx/sbin/nginx </li>
+</ol>
+</li>
+</ol>
+<p>查看端口使用情况：<br>netstat -lnp –tcp<br>如何让server进程退出运行？<br>直接kill即可让server进程正常退出，可以使用killall命令，例如：<br>killall fdfs_trackerd<br>killall fdfs_storaged<br>也可以使用如下命令：<br>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf stop<br>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf stop<br>千万不要使用-9参数强杀，否则可能会导致binlog数据丢失的问题。</p>
+<p>如何重启server进程？<br>直接使用：<br>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart<br>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart</p>
+<ol>
+<li>nginx 服务器重启命令，关闭<br>nginx -s reload  ：修改配置后重新加载生效<br>nginx -s reopen  ：重新打开日志文件<br>nginx -t -c /path/to/nginx.conf 测试nginx配置文件是否正确</li>
+</ol>
+<p>关闭nginx：<br>nginx -s stop  :快速停止nginx<br>         quit  ：完整有序的停止nginx</p>
+<p>其他的停止nginx 方式：</p>
+<p>ps -ef | grep nginx</p>
+<p>kill -QUIT 主进程号     ：从容停止Nginx<br>kill -TERM 主进程号     ：快速停止Nginx<br>pkill -9 nginx          ：强制停止Nginx</p>
+<p>启动nginx:<br>nginx -c /path/to/nginx.conf</p>
+<p>平滑重启nginx：<br>kill -HUP 主进程号</p>
+<p>proxy_set_header Host $http_host;<br>proxy_set_header X-Real-IP $remote_addr;<br>proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br>    proxy_connect_timeout 90;<br>    proxy_send_timeout 90;<br>    proxy_read_timeout 90;<br>    proxy_buffer_size 16k;<br>    proxy_buffers 4 64k;<br>    proxy_busy_buffers_size 128k;<br>    proxy_temp_file_write_size 128k;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实时课堂/" rel="tag">#实时课堂</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/29/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/30/2016-11-30/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/17/在线课堂开发环境搭建/"
+           data-title="在线课堂开发环境搭建" data-url="http://darrenyjy.github.io/2016/11/17/在线课堂开发环境搭建/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/logo.jpg"
+               alt="darrenyjy" />
+          <p class="site-author-name" itemprop="name">darrenyjy</p>
+          <p class="site-description motion-element" itemprop="description">Every step leaves its print</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven私服的搭建"><span class="nav-number">1.</span> <span class="nav-text">Maven私服的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-下载-通过root用户进去Ubuntu-server"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 下载,通过root用户进去Ubuntu server　　</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-启动"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-配置nexus"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 配置nexus</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-开启开机启动"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.开启开机启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql搭建"><span class="nav-number">2.</span> <span class="nav-text">Mysql搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装mysql"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.安装mysql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-新建用户开启远程链接"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.新建用户开启远程链接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx搭建"><span class="nav-number">3.</span> <span class="nav-text">nginx搭建</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darrenyjy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuanjinyao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("mSGr7DSdrb1MDREKNukp95J9-gzGzoHsz", "R8pAocDT5l66rbGYIPyGYaWz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

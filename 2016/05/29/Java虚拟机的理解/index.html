@@ -118,7 +118,7 @@
  是一块较小的内存空间，其作用可以看作是当前线程所执行的字节码的行号指示器，字节码解析器工作时通过改变程序计数器的值来选取下一条需要执行的字节码指令。程序">
 <meta property="og:image" content="http://darrenyjy.github.io/uploads/7.jmm.png">
 <meta property="og:image" content="http://darrenyjy.github.io/uploads/1.png">
-<meta property="og:updated_time" content="2016-10-09T08:41:06.000Z">
+<meta property="og:updated_time" content="2016-10-12T10:52:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机的理解">
 <meta name="twitter:description" content="java虚拟机内存结构   java虚拟机规范规定的java虚拟机内存其实就是java虚拟机运行时数据区，其架构如下：  
@@ -411,7 +411,7 @@
 <h2 id="JVM内存Survivor-space为什么要有From区和To区"><a href="#JVM内存Survivor-space为什么要有From区和To区" class="headerlink" title="JVM内存Survivor space为什么要有From区和To区"></a>JVM内存Survivor space为什么要有From区和To区</h2><ul>
 <li><p>Survivor的存在意义，就是减少被送到老年代的对象，进而减少Full GC的发生，提高JVM的效率。Survivor的预筛选保证，只有经历16次Minor GC还能在新生代中存活的对象，才会被送到老年代。<br><img src="/uploads/1.png" alt="1" title="没有from和to区的情形"></p>
 </li>
-<li><p>刚刚新建的对象在Eden中，一旦Eden满了，触发一次Minor GC，Eden中的存活对象就会被移动到Survivor区。这样继续循环下去，下一次Eden满了的时候，问题来了，此时进行Minor GC，Eden和Survivor各有一些存活对象，如果此时把Eden区的存活对象硬放到Survivor区，很明显这两部分对象所占有的内存是不连续的，也就导致了内存碎片化。 如果有了from区和to区，永远有一个survivor space是空的，另一个非空的survivor space无碎片空间，保证了空间的连续性。</p>
+<li><p>刚刚新建的对象在Eden中，一旦Eden满了，触发一次Minor GC，Eden中的存活对象就会被移动到Survivor区。这样继续循环下去，下一次Eden满了的时候，问题来了，此时进行Minor GC，Eden和Survivor各有一些存活对象，如果此时把Eden区的存活对象硬放到Survivor区，很明显这两部分对象所占有的内存是不连续的，也就导致了内存碎片化。 如果有了from区和to区，永远有一个survivor space是空的，另一个非空的survivor space无碎片空间，保证了空间的连续性。eden区和survivor区空间的比例是8：2，当eden存活的对象survivor放不下时就会放到老年区。</p>
 </li>
 <li><p>将一些经常访问的对象通过内存移动组织在一起，从而维持尽可能多的内存空间，这种操作称为压缩。</p>
 </li>
@@ -529,7 +529,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -537,7 +537,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
