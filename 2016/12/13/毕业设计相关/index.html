@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面试," />
+  <meta name="keywords" content="负载均衡,nginx," />
 
 
 
@@ -102,28 +102,23 @@
 
 
 
-<meta name="description" content="String池化
-String池 ：String是不可改变的，为了提高效率Java引用了字符串池的概念，例如new String(“abc”);首先会在String池中创建一个对象“abc”，因为有NEW的存在所以会分配地址空间copy String池的内容。当出现的String对象在String池中不存在时即在String池中创建该对象。
-
-字符串对象的创建方式有两种如下:
-String s1">
+<meta name="description" content="基于情景感知的nginx负载均衡算法调度模型的研究解决：传统的负载均衡策略，无论是利用软件实现负载均衡还是昂贵的硬件实现负载均衡，都只是一次配置负载均衡算法，永久使用。nginx负载均衡也不例外。为了能使根据实际情况动态调整。如带宽，用户访问量，机器运行状态（内存，cpu）
+    基于web的应用的需求越来越大，用户的日常生活越来越依赖这些应用，如电子商务，在线银行，股票交易，预订和产品销售等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String池化及intern方法的作用">
-<meta property="og:url" content="http://darrenyjy.github.io/2016/05/28/String池化及intern方法的作用/index.html">
+<meta property="og:title" content="毕业设计相关">
+<meta property="og:url" content="http://darrenyjy.github.io/2016/12/13/毕业设计相关/index.html">
 <meta property="og:site_name" content="石沉溪洞">
-<meta property="og:description" content="String池化
-String池 ：String是不可改变的，为了提高效率Java引用了字符串池的概念，例如new String(“abc”);首先会在String池中创建一个对象“abc”，因为有NEW的存在所以会分配地址空间copy String池的内容。当出现的String对象在String池中不存在时即在String池中创建该对象。
-
-字符串对象的创建方式有两种如下:
-String s1">
-<meta property="og:updated_time" content="2016-05-28T11:48:43.000Z">
+<meta property="og:description" content="基于情景感知的nginx负载均衡算法调度模型的研究解决：传统的负载均衡策略，无论是利用软件实现负载均衡还是昂贵的硬件实现负载均衡，都只是一次配置负载均衡算法，永久使用。nginx负载均衡也不例外。为了能使根据实际情况动态调整。如带宽，用户访问量，机器运行状态（内存，cpu）
+    基于web的应用的需求越来越大，用户的日常生活越来越依赖这些应用，如电子商务，在线银行，股票交易，预订和产品销售等。">
+<meta property="og:image" content="http://darrenyjy.github.io/media/14816119832763.jpg">
+<meta property="og:image" content="http://darrenyjy.github.io/media/14816145407433.jpg">
+<meta property="og:image" content="http://darrenyjy.github.io/media/14816148827436.jpg">
+<meta property="og:updated_time" content="2016-12-20T09:29:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="String池化及intern方法的作用">
-<meta name="twitter:description" content="String池化
-String池 ：String是不可改变的，为了提高效率Java引用了字符串池的概念，例如new String(“abc”);首先会在String池中创建一个对象“abc”，因为有NEW的存在所以会分配地址空间copy String池的内容。当出现的String对象在String池中不存在时即在String池中创建该对象。
-
-字符串对象的创建方式有两种如下:
-String s1">
+<meta name="twitter:title" content="毕业设计相关">
+<meta name="twitter:description" content="基于情景感知的nginx负载均衡算法调度模型的研究解决：传统的负载均衡策略，无论是利用软件实现负载均衡还是昂贵的硬件实现负载均衡，都只是一次配置负载均衡算法，永久使用。nginx负载均衡也不例外。为了能使根据实际情况动态调整。如带宽，用户访问量，机器运行状态（内存，cpu）
+    基于web的应用的需求越来越大，用户的日常生活越来越依赖这些应用，如电子商务，在线银行，股票交易，预订和产品销售等。">
+<meta name="twitter:image" content="http://darrenyjy.github.io/media/14816119832763.jpg">
 
 
 
@@ -144,7 +139,7 @@ String s1">
 
 
 
-  <title> String池化及intern方法的作用 | 石沉溪洞 </title>
+  <title> 毕业设计相关 | 石沉溪洞 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +289,7 @@ String s1">
             
             
               
-                String池化及intern方法的作用
+                毕业设计相关
               
             
           </h1>
@@ -306,8 +301,8 @@ String s1">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-28T19:16:57+08:00" content="2016-05-28">
-              2016-05-28
+            <time itemprop="dateCreated" datetime="2016-12-13T14:50:49+08:00" content="2016-12-13">
+              2016-12-13
             </time>
           </span>
 
@@ -320,8 +315,8 @@ String s1">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/负载均衡/" itemprop="url" rel="index">
+                    <span itemprop="name">负载均衡</span>
                   </a>
                 </span>
 
@@ -336,8 +331,8 @@ String s1">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/28/String池化及intern方法的作用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/String池化及intern方法的作用/" itemprop="commentsCount"></span>
+                <a href="/2016/12/13/毕业设计相关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/毕业设计相关/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,7 +342,7 @@ String s1">
 
           
           
-             <span id="/2016/05/28/String池化及intern方法的作用/" class="leancloud_visitors" data-flag-title="String池化及intern方法的作用">
+             <span id="/2016/12/13/毕业设计相关/" class="leancloud_visitors" data-flag-title="毕业设计相关">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,51 +364,20 @@ String s1">
       
 
       
-        <h2 id="String池化"><a href="#String池化" class="headerlink" title="String池化"></a>String池化</h2><blockquote>
-<p>String池 ：String是不可改变的，为了提高效率Java引用了字符串池的概念，例如new String(“abc”);首先会在String池中创建一个对象“abc”，因为有NEW的存在所以会分配地址空间copy String池的内容。当出现的String对象在String池中不存在时即在String池中创建该对象。</p>
-</blockquote>
-<p>字符串对象的创建方式有两种如下:</p>
-<pre><code>String s1 = new String(&quot;&quot;);//第一种不会入池
+        <p>基于情景感知的nginx负载均衡算法调度模型的研究<br>解决：传统的负载均衡策略，无论是利用软件实现负载均衡还是昂贵的硬件实现负载均衡，都只是一次配置负载均衡算法，永久使用。nginx负载均衡也不例外。为了能使根据实际情况动态调整。如带宽，用户访问量，机器运行状态（内存，cpu）</p>
+<pre><code>    基于web的应用的需求越来越大，用户的日常生活越来越依赖这些应用，如电子商务，在线银行，股票交易，预订和产品销售等。因此，企业服务提供商越来越积极地将应用程序移动到基于Web的基础设施上。这些变化实质上是将web应用从通信和浏览基础设施转变为一种商业的服务。这种基于服务的web应用对Web服务器系统的性能要求越来越高。 Web服务器可能在非常短的时间内接收大量的客户端连接，这将导致网络拥塞，响应时间增加，甚至将Web服务器的操作变为不稳定的情况。响应延迟很长时间将影响用户对与web服务使用的兴趣，并且他们可能放弃浏览网站。对于电子商务网站，这种降级尤其有害，因为它可能导致收入的显着损失和客户访问的大量流失。因此，用户对更快的基于Web的应用程序的需求需要现在的我们特别留意。任何单个服务器都可以轻易地成为瓶颈和单点故障。此外，单个服务器机器只能处理有限数量的请求，并且无法按需扩展。处理对Web服务器不断增长的处理需求的最佳方法是添加更多的硬件资源，而不是用更快的一个服务器完全替换一个服务器。当客户数量呈指数增长时，集群Web服务器是构建强大网站的领先架构。集群web服务器由称为web交换机的前端节点（其负责分派请求）和用于处理请求的几个web服务器组成。由于关于集群web服务器的管理的各种技术和控制问题，负载均衡算法和准入控制（其在web交换机中实现）对于提高集群web服务器的性能特别重要。在本文中，我们提出了一个新的负载平衡算法与几个贡献如下：我们首先基于他们的服务分类请求。
 
-String s2 = &quot;&quot;;//第二种看情况而定(等号右边如果是常量则入池,非常量则不入池)
-</code></pre><p>例:</p>
-<pre><code>String s3 = &quot;a&quot; + &quot;b&quot;; //&quot;a&quot;是常量,&quot;b&quot;是常量,常量+常量=常量,所以会入池.
-
-String s4 = s1 + &quot;b&quot;;   //s1是变量,&quot;b&quot;是常量,变量+常量!=常量,所以不会入池.
-</code></pre><p>一旦入池的话,就会先查找池中有无此对象.如果有此对象,则让对象引用指向此对象;如果无此对象,则先创建此对象,再让对象引用指向此对象.</p>
-<h2 id="intern"><a href="#intern" class="headerlink" title="intern()"></a>intern()</h2><blockquote>
-<p>存在于.class文件中的常量池，在运行期被JVM装载，并且可以扩充。String的intern()方法就是扩充常量池的一个方法；当一个String实例str调用intern()方法时，Java查找常量池中是否有相同Unicode的字符串常量，如果有，则返回其的引用，如果没有，则在常量池中增加一个Unicode等于str的字符串并返回它的引用；</p>
-</blockquote>
-<p>例3：</p>
-<pre><code>String s0= “kvill”;  
-String s1=new String(”kvill”);  
-String s2=new String(“kvill”);  
-System.out.println( s0==s1 );  
-System.out.println( “**********” );  
-s1.intern();  
-s2=s2.intern(); //把常量池中“kvill”的引用赋给s2  
-System.out.println( s0==s1);  
-System.out.println( s0==s1.intern() );  
-System.out.println( s0==s2 );  
-</code></pre><p>结果为：</p>
-<pre><code>false  
-**********  
-false //虽然执行了s1.intern(),但它的返回值没有赋给s1  
-true //说明s1.intern()返回的是常量池中”kvill”的引用  
-true  
-</code></pre><p>最后我再破除一个错误的理解：</p>
-<p>有人说，”使用String.intern()方法则可以将一个String类的保存到一个全局String表中，如果具有相同值的Unicode字符串已经在这个表中，那么该方法返回表中已有字符串的地址，如果在表中没有相同值的字符串，则将自己的地址注册到表中”。如果我把他说的这个全局的String表理解为常量池的话，他的最后一句话，“<strong>如果在表中没有相同值的字符串，则将自己的地址注册到表中</strong>”是错的：</p>
-<p>看例4：</p>
-<pre><code>String s1=new String(&quot;kvill&quot;);  
-String s2=s1.intern();  
-System.out.println( s1==s1.intern() );  
-System.out.println( s1+&quot; &quot;+s2 );  
-System.out.println( s2==s1.intern() );  
-</code></pre><p>结果：</p>
-<pre><code>false 
-kvill kvill  
-true  
-</code></pre><p>在这个类中我们没有声名一个”kvill”常量，所以常量池中一开始是没有”kvill”的，当我们调用s1.intern()后就在常量池中新添加了一个”kvill”常量，原来的不在常量池中的”kvill”仍然存在，也就不是“将自己的地址注册到常量池中”了。</p>
+    基于web的应用的需求越来越大，用户的日常生活越来越依赖这些应用，但是随着使用人数的增加，对这些服务器的性能要求越来越高，任何单个服务器都可以轻易地成为瓶颈和单点故障。此外，单个服务器机器只能处理有限数量的请求，并且无法按需扩展。处理对Web服务器不断增长的处理需求的最佳方法是添加更多的硬件资源，而不是用更快的一个服务器完全替换一个服务器。当客户数量呈指数增长时，集群Web服务器是构建强大网站的领先架构。集群web服务器由称为web交换机的前端节点（其负责分派请求）和用于处理请求的几个web服务器组成。由于关于集群web服务器的管理的各种技术和控制问题，负载均衡算法和准入控制（其在web交换机中实现）对于提高集群web服务器的性能特别重要。
+ 目前的负载均衡策略有很多，有硬件方案和软件方案两大类，硬件主要指的是像f5这种负载均衡器，性能比较好，但是价格昂贵。软件的策略有LVS和nginx,他们都各有优劣，但是他们共同的缺点就是负载均衡的策略都只能在服务启动前提前设置好，所以很难应对一些突发情况，只能够由特定的管理员去手工维护这些策略。
+因此我想基于nginx，利用情景感知，监控服务器的一些指标，如带宽，用户访问量，机器运行状态（内存，cpu），通过算法去动态让nginx去使用不同的负载均衡算法的调度。现在nginx负载均衡算法用轮训，ip hash，指定权重这三种。我在图书馆搜索了有关情景感知和负载均衡的相关论文，中文的基本没有，英文的与之相关的也很少，关于负载均衡的很多，但是结合情景感知的很少。后续工作主要是看看已经找到的相关论文，国内外现状和初步实现方案。
+</code></pre><p><img src="media/14816119832763.jpg" alt=""><br><img src="media/14816145407433.jpg" alt=""><br><img src="media/14816148827436.jpg" alt=""></p>
+<p>访问内容的大小 ip地址 缓存 吞吐量 响应时间  cpu利用率 网络带宽  内存 访问时间 </p>
+<p>衡量标准:响应时间</p>
+<p>1.轮训<br>2.weight<br>3.ip_hash<br>4.fair（第三方）<br>按后端服务器的响应时间来分配请求，响应时间短的优先分配。<br>5.url_hash（第三方）<br>访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。   </p>
+<p>比如在cpu利用率都很大，请求队列等一样的时候选择轮训算法，在访问量很小的情况下使用fair算法，访问量小并且有缓存的情况下使用urlhash,同一ip访问量特别大的时候不用ip_hash</p>
+<p>相关论文</p>
+<p>Deciding Handover Points Based on Context-Aware Load Balancing in a WiFi-WiMAX Heterogeneous Network Environment<br>基于分布式情景感知的分层式网络路由方法 CN 103595657 A<br>上下文感知系统中的规则生成与匹配算法<br>Workload-aware load balancing for clustered Web servers<br> Load Balancing for Future Internet: An Approach Based on Game Theory</p>
+<p>1.特征的选择<br>    1.1 通过相关论文确定备选特征<br>2.数据采集和标注<br>    2.1 确定采集系统实现方案（服务器如何配置，采集日志的格式）<br>    2.2 确定如何模拟用户访问行为<br>    2.3 在不同场景下分析采用哪个算法最好，给数据标签<br>    2.3 根据所选特征采集数据<br>3.数据的清理和预处理<br>4.特征的确定<br>    3.1 根据采集的数据通过神经网络或者特征选择算法去进行指标的评估<br>    3.2 确定参加模型训练的指标<br>5.模型的选择<br>    4.1 采用不同模型对数据集进行训练，找出准确率最高的<br>6.模型优化<br>7.模型评估<br>8.实际效果展示</p>
 
       
     </div>
@@ -436,7 +400,9 @@ true
       
         <div class="post-tags">
           
-            <a href="/tags/面试/" rel="tag">#面试</a>
+            <a href="/tags/负载均衡/" rel="tag">#负载均衡</a>
+          
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
           
         </div>
       
@@ -445,17 +411,13 @@ true
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/28/Java-ArrayList与LinkedList对比/" rel="next" title="Java ArrayList与LinkedList对比">
-                <i class="fa fa-chevron-left"></i> Java ArrayList与LinkedList对比
+              <a href="/2016/11/17/在线课堂开发环境搭建/" rel="next" title="在线课堂开发环境搭建">
+                <i class="fa fa-chevron-left"></i> 在线课堂开发环境搭建
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/29/Java虚拟机的理解/" rel="prev" title="Java虚拟机的理解">
-                Java虚拟机的理解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -481,8 +443,8 @@ true
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/28/String池化及intern方法的作用/"
-           data-title="String池化及intern方法的作用" data-url="http://darrenyjy.github.io/2016/05/28/String池化及intern方法的作用/">
+      <div class="ds-thread" data-thread-key="2016/12/13/毕业设计相关/"
+           data-title="毕业设计相关" data-url="http://darrenyjy.github.io/2016/12/13/毕业设计相关/">
       </div>
     
   </div>
@@ -573,7 +535,7 @@ true
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String池化"><span class="nav-number">1.</span> <span class="nav-text">String池化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intern"><span class="nav-number">2.</span> <span class="nav-text">intern()</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
